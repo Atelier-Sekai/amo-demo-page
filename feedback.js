@@ -52,8 +52,10 @@ async function provideFeedback(field) {
 
   const data = getFormData();
   const inputModel = { data, request_type };
+  const apiMeta = document.querySelector('meta[name="api-url"]');
+  const API_URL = apiMeta ? apiMeta.content : '';
   try {
-    const response = await fetch('127.0.0.1:8000/application-feedback', {
+    const response = await fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inputModel)
