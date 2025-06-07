@@ -4,120 +4,142 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AMO Grant Application</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: #f7f9fc;
-      color: #333;
-      line-height: 1.5;
-      padding: 20px;
-    }
-    .container {
-      max-width: 600px;
-      background: #fff;
-      padding: 24px;
-      margin: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    fieldset {
-      border: 1px solid #ccc;
-      padding: 16px;
-      margin-bottom: 16px;
-      border-radius: 4px;
-    }
-    legend {
-      font-weight: bold;
-      padding: 0 8px;
-    }
-    label {
-      display: block;
-      margin-top: 12px;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
-    input[type="number"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border: 1px solid #bbb;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .submit-btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      margin-top: 16px;
-      background: #0055a5;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .submit-btn:hover {
-      background: #004080;
-    }
-  </style>
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
+  <main class="container">
     <h1>AMO Grant Application</h1>
-    <form method="post" action="#" enctype="multipart/form-data">
+    <form method="post" action="#" enctype="multipart/form-data" aria-label="AMO Grant Application Form">
+      <!-- Identifiers Section -->
       <fieldset>
-        <legend>Applicant Information</legend>
-        <label for="applicant-name">Name <span aria-hidden="true">*</span></label>
-        <input type="text" id="applicant-name" name="applicant_name" required maxlength="100" placeholder="Full name"/>
-
-        <label for="municipality">Municipality <span aria-hidden="true">*</span></label>
-        <input type="text" id="municipality" name="municipality" required maxlength="100" placeholder="e.g., City of Toronto"/>
-
-        <label for="contact-email">Email <span aria-hidden="true">*</span></label>
-        <input type="email" id="contact-email" name="contact_email" required placeholder="you@example.com"/>
-
-        <label for="contact-phone">Phone Number <span aria-hidden="true">*</span></label>
-        <input type="tel" id="contact-phone" name="contact_phone" required placeholder="(###) ###-####"/>
+        <legend>Identifiers</legend>
+        <label for="internal_id">Internal Project ID</label>
+        <input type="text" id="internal_id" name="internal_id" maxlength="50" placeholder="Unique project code (max 50 chars)" />
+        <label for="municipal_id">Municipal ID</label>
+        <input type="number" id="municipal_id" name="municipal_id" placeholder="Numeric municipal identifier" />
       </fieldset>
-
+      <!-- Basic Info Section -->
       <fieldset>
-        <legend>Project Details</legend>
-        <label for="project-title">Project Title <span aria-hidden="true">*</span></label>
-        <input type="text" id="project-title" name="project_title" required maxlength="150" placeholder="Short descriptive title"/>
-
-        <label for="project-description">Description <span aria-hidden="true">*</span></label>
-        <textarea id="project-description" name="project_description" required placeholder="Provide a summary of the project"></textarea>
-
-        <label for="funding-amount">Funding Requested ($) <span aria-hidden="true">*</span></label>
-        <input type="number" id="funding-amount" name="funding_amount" required min="0" step="0.01" placeholder="e.g., 5000.00"/>
-
-        <label for="start-date">Start Date <span aria-hidden="true">*</span></label>
-        <input type="date" id="start-date" name="start_date" required/>
-
-        <label for="end-date">End Date <span aria-hidden="true">*</span></label>
-        <input type="date" id="end-date" name="end_date" required/>
+        <legend>Basic Info</legend>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="title" style="flex: 1;">Project Title</label>
+          <button type="button" class="feedback-btn" onclick="provideFeedback('title')">Provide me feedback</button>
+        </div>
+        <input type="text" id="title" name="title" maxlength="100" placeholder="Concise project title (max 100 chars)" />
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="scope_of_work" style="flex: 1;">Scope of Work</label>
+          <button type="button" class="feedback-btn" onclick="provideFeedback('scope_of_work')">Provide me feedback</button>
+        </div>
+        <textarea id="scope_of_work" name="scope_of_work" maxlength="500" placeholder="Describe assets and activities (max 500 chars)"></textarea>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="objectives" style="flex: 1;">Objectives</label>
+          <button type="button" class="feedback-btn" onclick="provideFeedback('objectives')">Provide me feedback</button>
+        </div>
+        <textarea id="objectives" name="objectives" maxlength="500" placeholder="Describe need or benefit (max 500 chars)"></textarea>
+        <label for="additional_comments">Additional Comments</label>
+        <textarea id="additional_comments" name="additional_comments" placeholder="Enter any extra context, one comment per line"></textarea>
       </fieldset>
-
+      <!-- Classification Section -->
       <fieldset>
-        <legend>Supporting Documents</legend>
-        <label for="support-docs">Upload Documents <span aria-hidden="true">*</span></label>
-        <input type="file" id="support-docs" name="support_docs" required accept=".pdf,.doc,.docx"/>
+        <legend>Classification</legend>
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="">Select project category</option>
+        </select>
+        <label for="subcategory">Subcategory</label>
+        <select id="subcategory" name="subcategory">
+          <option value="">Select subcategory</option>
+        </select>
+        <label for="nature_of_investment">Nature of Investment</label>
+        <select id="nature_of_investment" name="nature_of_investment">
+          <option value="">Select nature of investment</option>
+        </select>
       </fieldset>
-
+      <!-- Location & Dates Section -->
+      <fieldset>
+        <legend>Location & Dates</legend>
+        <label for="latitude">Latitude</label>
+        <input type="number" step="any" id="latitude" name="latitude" placeholder="e.g., 43.651070" />
+        <label for="longitude">Longitude</label>
+        <input type="number" step="any" id="longitude" name="longitude" placeholder="e.g., -79.347015" />
+        <label for="start">Construction Start Date</label>
+        <input type="date" id="start" name="start" />
+        <label for="eoc">Construction End Date</label>
+        <input type="date" id="eoc" name="eoc" />
+        <label for="eof">Financing End Date</label>
+        <input type="date" id="eof" name="eof" />
+      </fieldset>
+      <!-- Financials Section -->
+      <fieldset>
+        <legend>Financials</legend>
+        <label for="total_budget">Total Budget ($)</label>
+        <input type="number" step="0.01" id="total_budget" name="total_budget" placeholder="Exclude rebated HST" />
+        <label for="ccbf_budgeted">CCBF Budgeted ($)</label>
+        <input type="number" step="0.01" id="ccbf_budgeted" name="ccbf_budgeted" />
+        <label for="ccbf_allocated">CCBF Allocated This Year ($)</label>
+        <input type="number" step="0.01" id="ccbf_allocated" name="ccbf_allocated" />
+        <label for="other_federal_funds">Other Federal Funds?</label>
+        <select id="other_federal_funds" name="other_federal_funds">
+          <option value="">Select</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <label for="provincial_funds">Provincial Funds?</label>
+        <select id="provincial_funds" name="provincial_funds">
+          <option value="">Select</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <label for="stacking_limits">Stacking Limits</label>
+        <input type="text" id="stacking_limits" name="stacking_limits" placeholder="Describe any stacking limits" />
+      </fieldset>
+      <!-- Signage Compliance Section -->
+      <fieldset>
+        <legend>Signage Compliance</legend>
+        <label for="signage">Signage Posted?</label>
+        <select id="signage" name="signage">
+          <option value="">Select</option>
+          <option value="Posted">Posted</option>
+          <option value="Not posted">Not posted</option>
+        </select>
+        <label for="signage_intentions">Signage Intentions</label>
+        <select id="signage_intentions" name="signage_intentions">
+          <option value="">Select</option>
+          <option value="will_post">Signage will be posted</option>
+          <option value="will_not_post">Signage will not be posted</option>
+        </select>
+        <label for="signage_rationale">Reason for No Signage</label>
+        <select id="signage_rationale" name="signage_rationale">
+          <option value="">Select reason</option>
+        </select>
+        <label for="signage_type">Type of Signage</label>
+        <select id="signage_type" name="signage_type">
+          <option value="">Select type</option>
+          <option value="Physical">Physical</option>
+          <option value="Digital">Digital</option>
+          <option value="Both">Both</option>
+        </select>
+      </fieldset>
+      <!-- Attachments & Links Section -->
+      <fieldset>
+        <legend>Attachments & Links</legend>
+        <label for="file_uploaded">Upload Documents</label>
+        <input type="file" id="file_uploaded" name="file_uploaded" accept=".pdf,.doc,.docx" />
+        <label for="links">Links</label>
+        <textarea id="links" name="links" placeholder="Enter URLs separated by commas"></textarea>
+      </fieldset>
+      <!-- Administrative Section -->
+      <fieldset>
+        <legend>Administrative</legend>
+        <label for="status">Status</label>
+        <input type="text" id="status" name="status" placeholder="e.g., Draft, Submitted" />
+        <label for="assignee">Assignee (User ID)</label>
+        <input type="number" id="assignee" name="assignee" />
+      </fieldset>
       <button type="submit" class="submit-btn">Submit Application</button>
     </form>
-  </div>
+  </main>
+  <script src="feedback.js"></script>
 </body>
 </html>
