@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AMO Grant Application</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      line-height: 1.5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: #fff;
+      padding: 24px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 4px;
+    }
+    legend {
+      font-weight: bold;
+      padding: 0 8px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-top: 16px;
+      background: #0055a5;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background: #004080;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AMO Grant Application</h1>
+    <form method="post" action="#" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Applicant Information</legend>
+        <label for="applicant-name">Name <span aria-hidden="true">*</span></label>
+        <input type="text" id="applicant-name" name="applicant_name" required maxlength="100" placeholder="Full name"/>
+
+        <label for="municipality">Municipality <span aria-hidden="true">*</span></label>
+        <input type="text" id="municipality" name="municipality" required maxlength="100" placeholder="e.g., City of Toronto"/>
+
+        <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+        <input type="email" id="contact-email" name="contact_email" required placeholder="you@example.com"/>
+
+        <label for="contact-phone">Phone Number <span aria-hidden="true">*</span></label>
+        <input type="tel" id="contact-phone" name="contact_phone" required placeholder="(###) ###-####"/>
+      </fieldset>
+
+      <fieldset>
+        <legend>Project Details</legend>
+        <label for="project-title">Project Title <span aria-hidden="true">*</span></label>
+        <input type="text" id="project-title" name="project_title" required maxlength="150" placeholder="Short descriptive title"/>
+
+        <label for="project-description">Description <span aria-hidden="true">*</span></label>
+        <textarea id="project-description" name="project_description" required placeholder="Provide a summary of the project"></textarea>
+
+        <label for="funding-amount">Funding Requested ($) <span aria-hidden="true">*</span></label>
+        <input type="number" id="funding-amount" name="funding_amount" required min="0" step="0.01" placeholder="e.g., 5000.00"/>
+
+        <label for="start-date">Start Date <span aria-hidden="true">*</span></label>
+        <input type="date" id="start-date" name="start_date" required/>
+
+        <label for="end-date">End Date <span aria-hidden="true">*</span></label>
+        <input type="date" id="end-date" name="end_date" required/>
+      </fieldset>
+
+      <fieldset>
+        <legend>Supporting Documents</legend>
+        <label for="support-docs">Upload Documents <span aria-hidden="true">*</span></label>
+        <input type="file" id="support-docs" name="support_docs" required accept=".pdf,.doc,.docx"/>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>
