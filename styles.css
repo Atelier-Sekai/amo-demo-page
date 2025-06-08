@@ -23,4 +23,15 @@ textarea { resize: vertical; }
   background: #0055a5;
   color: #fff;
   border: 1px solid #0055a5;
+}
+.feedback-box {
+  margin-top: 6px;
+  font-size: 0.95em;
+  color: #0055a5;
+  background: #f0f8ff;
+  border: 1px solid #b3d8fd;
+  border-radius: 4px;
+  padding: 8px;
+  min-height: 24px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 } 

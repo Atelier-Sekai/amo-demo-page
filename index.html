@@ -11,6 +11,7 @@
 <body>
   <main class="container">
     <h1>AMO Grant Application</h1>
+    <button type="button" id="dummy-data-btn" style="display:block;margin:0 auto 16px auto;" onclick="loadDummyData()">Load Dummy Data</button>
     <form method="post" action="#" enctype="multipart/form-data" aria-label="AMO Grant Application Form">
       <!-- Identifiers Section -->
       <fieldset>
@@ -45,16 +46,42 @@
       <fieldset>
         <legend>Classification</legend>
         <label for="category">Category</label>
-        <select id="category" name="category">
+        <select id="category" name="category" onchange="updateSubcategories()">
           <option value="">Select project category</option>
+          <option value="Broadband Connectivity">Broadband Connectivity</option>
+          <option value="Brownfield Redevelopment">Brownfield Redevelopment</option>
+          <option value="Capacity-Building">Capacity-Building</option>
+          <option value="Community Energy Systems">Community Energy Systems</option>
+          <option value="Culture">Culture</option>
+          <option value="Disaster Mitigation">Disaster Mitigation</option>
+          <option value="Drinking Water">Drinking Water</option>
+          <option value="Fire Stations">Fire Stations</option>
+          <option value="Local Roads and Bridges">Local Roads and Bridges</option>
+          <option value="Public Transit">Public Transit</option>
+          <option value="Recreation">Recreation</option>
+          <option value="Regional and Local Airports">Regional and Local Airports</option>
+          <option value="Short-line Rail">Short-line Rail</option>
+          <option value="Short-sea Shipping">Short-sea Shipping</option>
+          <option value="Solid Waste">Solid Waste</option>
+          <option value="Sports">Sports</option>
+          <option value="Tourism">Tourism</option>
+          <option value="Wastewater">Wastewater</option>
         </select>
         <label for="subcategory">Subcategory</label>
-        <select id="subcategory" name="subcategory">
+        <select id="subcategory" name="subcategory" disabled>
           <option value="">Select subcategory</option>
+          <option value="Active Transportation">Active Transportation</option>
+          <option value="Bridges">Bridges</option>
+          <option value="Culverts">Culverts</option>
+          <option value="Local Roads">Local Roads</option>
+          <option value="Other">Other</option>
         </select>
         <label for="nature_of_investment">Nature of Investment</label>
         <select id="nature_of_investment" name="nature_of_investment">
           <option value="">Select nature of investment</option>
+          <option value="New">New</option>
+          <option value="Enhancement">Enhancement</option>
+          <option value="Renewal">Renewal</option>
         </select>
       </fieldset>
       <!-- Location & Dates Section -->
